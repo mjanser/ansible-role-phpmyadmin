@@ -1,0 +1,17 @@
+---
+- hosts: all
+
+  pre_tasks:
+    - apt: "name={{ item }}"
+      sudo: yes
+      with_items: [ nginx, php5-cli, php5-fpm, php5-mysql, mysql-server ]
+    - lineinfile: dest=/etc/nginx/sites-enabled/default insertafter="^\tserver_name localhost;$" line="\tinclude /etc/nginx/global.d/*;"
+      sudo: yes
+    - service: name=mysql state=running
+      sudo: yes
+
+  roles:
+    - ansible-role-phpmyadmin
+
+  vars:
+    - phpmyadmin_php_fpm_socket: unix:/var/run/php5-fpm.sock
