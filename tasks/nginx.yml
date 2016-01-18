@@ -3,11 +3,11 @@
   file:
     path: /etc/nginx/global.d
     state: directory
-  sudo: yes
+  become: yes
 
 - name: "ensure phpmyadmin configuration for nginx is installed"
   template:
     src: nginx.conf.j2
     dest: /etc/nginx/global.d/phpmyadmin.conf
-  sudo: yes
+  become: yes
   notify: "restart web server"

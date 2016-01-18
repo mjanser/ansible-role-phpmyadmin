@@ -3,12 +3,12 @@
 
   pre_tasks:
     - apt: "name={{ item }}"
-      sudo: yes
+      become: yes
       with_items: [ nginx, php5-cli, php5-fpm, php5-mysql, mysql-server ]
     - lineinfile: dest=/etc/nginx/sites-enabled/default insertafter="^\tserver_name localhost;$" line="\tinclude /etc/nginx/global.d/*;"
-      sudo: yes
+      become: yes
     - service: name=mysql state=running
-      sudo: yes
+      become: yes
 
   roles:
     - ansible-role-phpmyadmin

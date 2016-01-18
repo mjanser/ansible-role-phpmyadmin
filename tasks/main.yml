@@ -3,12 +3,12 @@
   apt_repository:
     repo: "ppa:nijel/phpmyadmin"
     update_cache: yes
-  sudo: yes
+  become: yes
 
 - name: "ensure phpmyadmin package is installed"
   apt:
     name: phpmyadmin
-  sudo: yes
+  become: yes
 
 - include: nginx.yml
   when: "phpmyadmin_web_server == 'nginx'"
