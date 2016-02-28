@@ -1,6 +1,5 @@
 ---
-- name: "restart web server"
-  become: yes
+- name: reload nginx
   service:
-    name: "{{ phpmyadmin_web_server }}"
-    state: restarted
+    name: nginx
+    state: reloaded
