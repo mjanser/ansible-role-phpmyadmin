@@ -5,6 +5,8 @@ An Ansible role that installs phpMyAdmin on Ubuntu.
 If nginx is installed phpMyAdmin will be configured for it in `/etc/nginx/global.d/phpmyadmin.conf`. The files in that
 directory should be included in all virtual hosts with `include /etc/nginx/global.d/*.conf;`.
 
+**Warning**: This role is not maintained anymore!
+
 ## Requirements
 
 For phpMyAdmin to work a web server (e.g. nginx), php and MySQL have to be installed.
